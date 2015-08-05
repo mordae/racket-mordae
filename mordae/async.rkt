@@ -33,15 +33,15 @@
 (define-syntax async
   (syntax-rules (:)
     ((_ : type body ...)
-     ((inst make-async-task type) (λ () body ...)))
+     ((inst make-async-task type) (λ () : type body ...)))
 
     ((_ body ...)
      (make-async-task (λ () body ...)))))
 
-(define-syntax (async/loop stx)
+(define-syntax async/loop
   (syntax-rules (:)
     ((_ : type body ...)
-     ((inst make-async-task/loop type) (λ () body ...)))
+     ((inst make-async-task/loop type) (λ () : type body ...)))
 
     ((_ body ...)
      (make-async-task/loop (λ () body ...)))))
