@@ -17,7 +17,7 @@
   (syntax-parser
     ((_ (k v) ...)
      #`(and (? hash?)
-            (and #,@#'((app (λ (v) (hash-ref v k #f))
+            (and #,@#'((app (λ (ht) (hash-ref ht k #f))
                             (and (? identity) v)) ...))))))
 
 
