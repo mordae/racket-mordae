@@ -22,6 +22,10 @@
     (loop)))
 
 
+(define-syntax-rule (with-semaphore sema body ...)
+  (call-with-semaphore sema (λ _ body ...)))
+
+
 (define-syntax-rule (spawn-thread body ...)
   (thread (λ () body ...)))
 
