@@ -15,7 +15,7 @@
   (wrap-evt always-evt (λ _ value)))
 
 
-(: recurring-alarm-evt (-> Flonum (Evtof Flonum)))
+(: recurring-alarm-evt (-> Real (Evtof Real)))
 (define (recurring-alarm-evt interval)
   (async-task-evt
     (let* ((start (current-inexact-milliseconds))
