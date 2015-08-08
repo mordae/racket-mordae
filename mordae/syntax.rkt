@@ -17,7 +17,7 @@
 
 
 (define-syntax-rule (loop body ...)
-  (let loop ()
+  (let loop : Nothing ()
     (begin body ...)
     (loop)))
 
