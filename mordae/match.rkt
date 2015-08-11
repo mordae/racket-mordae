@@ -3,8 +3,7 @@
 ; Additional Match Expanders
 ;
 
-(require racket/match
-         racket/function)
+(require racket/match)
 
 (require
   (for-syntax racket/base
@@ -18,8 +17,10 @@
   (syntax-parser
     ((_ (k v) ...)
      #`(and (? hash?)
-            (and #,@#'((app (λ (ht) (hash-ref ht k #f))
-                            (and (? identity) v)) ...))))))
+            (and #,@#'((app (λ (ht)
+                              (and (hash-has-key? ht k)
+                                   (box (hash-ref ht k))))
+                            (? values (app unbox v))) ...))))))
 
 
 (define-match-expander regexp-parts
